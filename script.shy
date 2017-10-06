@@ -1,0 +1,14 @@
+#!/bin/bash
+make all
+
+read step
+
+for i in `seq 1 24`;
+do
+        echo $i
+        mpirun -np $i ./poly-eval sample-constants-long.txt sample-values.txt > nproc-$i-run1-500K.dat
+        mpirun -np $i ./poly-eval sample-constants-long.txt sample-values.txt > nproc-$i-run2-500K.dat
+        mpirun -np $i ./poly-eval sample-constants-long.txt sample-values.txt > nproc-$i-run3-500K.dat
+        mpirun -np $i ./poly-eval sample-constants-long.txt sample-values.txt > nproc-$i-run4-500K.dat
+        mpirun -np $i ./poly-eval sample-constants-long.txt sample-values.txt > nproc-$i-run5-500k.dat
+done
